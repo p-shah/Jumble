@@ -41,14 +41,14 @@
         var btnText = $('#btnStartAndEnd').text();
         if (btnText == startEndBtnText) {
 
-            alert('solve all riddles within 20 minutes');
-            
+            alert('Try your best to solve all riddles within 20 minutes! Good Luck!');
+
             var btnText = $('#btnStartAndEnd').text('Give Up');
             $('#gameDiv').show();
 
             $('.clsAnswer').val('');
             $('#txtFinalAnswer').val('');
-            
+
             $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
             $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
             $('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
@@ -56,30 +56,24 @@
             $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
         }
         else {
-           // $('#gameDiv').hide();
+            // $('#gameDiv').hide();
             var btnText = $('#btnStartAndEnd').text(startEndBtnText);
-             alert('You are failed');
-             $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
-             $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
-             $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
-             $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
-             $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
-             currentDataIndex = 0;
-             counter = 0;
-             totalCorrectAnswer = 0;
-             $('#counter').hide();
-             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
-             $('#totalTimeTaken').text('');
-            
+            alert('You are failed');
+            $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
+            $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
+            $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
+            $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
+            $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
+            currentDataIndex = 0;
+            counter = 0;
+            totalCorrectAnswer = 0;
+            $('#counter').hide();
+            $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
+            $('#totalTimeTaken').text('');
 
-           
-            
-            
-           
-           // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
-
+            // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
         }
-        
+
     });
 
     $('#btnCheck').on('click', function () {
@@ -114,22 +108,20 @@
 
             $('.clsHint').text('');
 
-            
+
 
             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
 
             $('#totalTimeTaken').text(time);
             showGrade();
-            
-
 
             if (allDataFromCSV.length == currentDataIndex) {
-                
+
                 showGrade();
             }
         }
         else {
-            alert('Your answer is incorrect! Please try again');
+            alert('Your answer is incorrect! Please try again!');
         }
     });
 
@@ -138,10 +130,10 @@
         console.log(firstTD.innerHTML);
         $(this).parentsUntil('tbody').find('td')[0].innerHTML = shuffle(firstTD.innerHTML);
     });
-   
+
     $('#txtFirstWord').on('change', function () {
         if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() == $('#txtFirstWord').val().toLocaleLowerCase()) {
-            $('#tdHint1').text('Hint : '+ allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
+            $('#tdHint1').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
             $('#spnFirstWord').show();
             $('#txtFirstWord').attr('readonly', 'true');
         }
@@ -171,7 +163,7 @@
     function loadAllDataFromCSV() {
         $.post("/Home/GetAllDataFromCsvFile", function (data) {
             allDataFromCSV = data;
-           // console.log(allDataFromCSV[0]);
+            // console.log(allDataFromCSV[0]);
             totalQuestions = data.length;
         });
     }
@@ -202,6 +194,8 @@
         }
 
         return result;
-
     };
 });
+
+
+

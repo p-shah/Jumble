@@ -1,124 +1,218 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Word Jumble";
 }
+<head runat="server">
+
+    <style>
+        body {
+            background-image: url("https://4.bp.blogspot.com/-uP59kOAczw4/Vg0IQhXc2PI/AAAAAAAB1ho/-Pjw6ajPrEM/s1920/Love_You_uhd.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+
+<script src="~/Scripts/Home/index.js"></script>
 
 <div class="well">
     <h1>Welcome to Word Jumble!</h1>
     <p>
         Ready to Play? hello priya! ;-)
-
     </p>
     <p>
-       testing
-
+        testing
     </p>
     <button class="btn btn-primary" id="btnStartAndEnd">Start Game</button>
 </div>
 
-<div class="row" id="gameDiv">
-    <div class="col-md-7">
-        <table class="table table-bordered">
-            <thead>
-                <tr class="success">
-                    <th id="tdRiddle" colspan="5">
-                       
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="tdJumbleWord1"></td>
-                    <td width="20px;">    
-                        <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
-                    </td>
-                    <td>
-                        <input class="clsAnswer" type="text" id="txtFirstWord"/>
-                    </td>
-                    <td width="20px;">
-                        <span id="spnFirstWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </td>
-                    <td class="clsHint" id="tdHint1">
-                    </td>
-                </tr>
-                <tr>
-                    <td id="tdJumbleWord2"></td>
-                    <td width="20px;">
-                        <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
-                    </td>
-                    <td>
-                        <input class="clsAnswer" type="text" id="txtSecondWord"/>
-                    </td>
-                    <td width="20px;">
-                        <span id="spnSecondWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </td>
-                    <td class="clsHint" id="tdHint2">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td id="tdJumbleWord3"></td>
-                    <td width="20px;">
-                        <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
-                    </td>
-                    <td>
-                        <input class="clsAnswer" type="text" id="txtThirdWord" />
-                    </td>
-                    <td width="20px;">
-                        <span id="spnThirdWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </td>
-                    <td class="clsHint" id="tdHint3"></td>
-                </tr>
-                <tr>
-                    <td id="tdJumbleWord4"></td>
-                    <td width="20px;">
-                        <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
-                    </td>
-                    <td>
-                        <input class="clsAnswer" type="text" id="txtFourthWord" />
-                    </td>
-                    <td width="20px;">
-                        <span id="spnFourthWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </td>
-                    <td class="clsHint" id="tdHint4"></td>
-                </tr>
-                <tr class="success">
-                    <td>
-                        Your Final Answer : 
-                    </td>
-                    <td width="20px;">
-                        
-                    </td>
-                    <td>
-                        <input id="txtFinalAnswer" type="text"/>
-                    </td>
-                    <td colspan="2">
-                        <button id="btnCheck" class="btn btn-info">Check Answer</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container-fluid">
+    <div class="row" id="gameDiv">
+        <div class="col-md-7">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th id="tdRiddle" colspan="5">
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="tdJumbleWord1"></td>
+                        <td width="20px;">
+                            <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
+                        </td>
+                        <td>
+                            <input class="clsAnswer" type="text" id="txtFirstWord" />
+                        </td>
+                        <td width="20px;">
+                            <span id="spnFirstWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </td>
+                        <td class="clsHint" id="tdHint1"></td>
+                    </tr>
+                    <tr>
+                        <td id="tdJumbleWord2"></td>
+                        <td width="20px;">
+                            <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
+                        </td>
+                        <td>
+                            <input class="clsAnswer" type="text" id="txtSecondWord" />
+                        </td>
+                        <td width="20px;">
+                            <span id="spnSecondWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </td>
+                        <td class="clsHint" id="tdHint2"></td>
+                    </tr>
+                    <tr>
+                        <td id="tdJumbleWord3"></td>
+                        <td width="20px;">
+                            <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
+                        </td>
+                        <td>
+                            <input class="clsAnswer" type="text" id="txtThirdWord" />
+                        </td>
+                        <td width="20px;">
+                            <span id="spnThirdWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </td>
+                        <td class="clsHint" id="tdHint3"></td>
+                    </tr>
+                    <tr>
+                        <td id="tdJumbleWord4"></td>
+                        <td width="20px;">
+                            <span class="shuffleClass glyphicon glyphicon-random" aria-hidden="true"></span>
+                        </td>
+                        <td>
+                            <input class="clsAnswer" type="text" id="txtFourthWord" />
+                        </td>
+                        <td width="20px;">
+                            <span id="spnFourthWord" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        </td>
+                        <td class="clsHint" id="tdHint4"></td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            Your Final Answer :
+                        </td>
+                        <td width="20px;"></td>
+                        <td>
+                            <input id="txtFinalAnswer" type="text" />
+                        </td>
+                        <td colspan="2">
+                            <button id="btnCheck" class="btn btn-info">Check Answer</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-3">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Total Questions</td>
+                        <td>Total Correct Answers</td>
+                        <td>Total Time Taken</td>
+                        <td>Grade</td>
+                    </tr>
+                    <tr>
+                        <td id="tdTotalQuestions"></td>
+                        <td id="tdTotalCorrectAnswers"></td>
+                        <td id="totalTimeTaken"></td>
+                        <td><h2 id="grade"></h2></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2">
+            <h1 id="counter" style="display:none"></h1>
+        </div>
     </div>
 
-     <div class="col-md-3">
-         <table class="table table-bordered">
-             <tbody>
-                 <tr>
-                     <td>Total Questions</td>
-                     <td>Total Correct Answers</td>
-                     <td>Total Time Taken</td>
-                     <td>Grade</td>
-                 </tr>
-                 <tr>
-                     <td id="tdTotalQuestions"></td>
-                     <td id="tdTotalCorrectAnswers"></td>
-                     <td id="totalTimeTaken"></td>
-                     <td><h2 id="grade"></h2></td>
-                 </tr>
-             </tbody>
-         </table>
-     </div>
-    <div class="col-md-2">
-        <h1 id="counter" style="display:none"></h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            1
+        </div>
+        <div class="col-md-3">
+            2
+        </div>
+        <div class="col-md-3">
+            3
+        </div>
+        <div class="col-md-3">
+            4
+        </div>
     </div>
 </div>
-<script src="~/Scripts/Home/index.js"></script>
+
+<!--Navbar-->
+<nav class="navbar navbar-default navbar-fixed-bottom" id="" style="width:100%;height:30%" >
+    <div class="container-fluid" style="background-color:black">
+
+        <div class="row" >
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <img src="http://www.aictoday.com/wp-content/uploads/2015/01/bg-sop1.jpg" alt=""  style="width: 100%"/>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+        @*<div class="navbar-brand">
+            <a class="navbar-brand" id="theNavbarBrand" href="#" style="color:black; text-decoration-color:white">Word Jumble</a>
+        </div>*@
+        @*<ul class="nav navbar-nav">
+                <li><a href="#" style="color: #fff">Something 1</a></li>
+                <li><a href="#" style="color: #fff">Something 2</a></li>
+
+            </ul>*@
+    </div>
+</nav>
+
+
+@*
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+</div>
+    
+    *@
+
+
