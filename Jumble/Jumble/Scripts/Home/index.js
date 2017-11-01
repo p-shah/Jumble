@@ -14,6 +14,11 @@
     $('#spnSecondWord').hide();
     $('#spnThirdWord').hide();
     $('#spnFourthWord').hide();
+    $('#warningFirstWord').hide();
+    $('#warningSecondWord').hide();
+    $('#warningThirdWord').hide();
+    $('#warningFourthWord').hide()
+
 
     $('#btnStartAndEnd').text(startEndBtnText);
 
@@ -39,11 +44,12 @@
         $('#tdTotalQuestions').text(totalQuestions);
         $('#grade').text('');
         var btnText = $('#btnStartAndEnd').text();
-        if (btnText == startEndBtnText) {
+        if (btnText === startEndBtnText) {
 
-            alert('Try your best to solve all riddles within 20 minutes! Good Luck!');
 
-            var btnText = $('#btnStartAndEnd').text('Give Up');
+            alert('solve all riddles within 20 minutes');
+            
+            btnText = $('#btnStartAndEnd').text('Give Up');
             $('#gameDiv').show();
 
             $('.clsAnswer').val('');
@@ -56,20 +62,28 @@
             $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
         }
         else {
-            // $('#gameDiv').hide();
-            var btnText = $('#btnStartAndEnd').text(startEndBtnText);
-            alert('You are failed');
-            $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
-            $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
-            $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
-            $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
-            $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
-            currentDataIndex = 0;
-            counter = 0;
-            totalCorrectAnswer = 0;
-            $('#counter').hide();
-            $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
-            $('#totalTimeTaken').text('');
+
+           // $('#gameDiv').hide();
+             btnText = $('#btnStartAndEnd').text(startEndBtnText);
+             alert('You Failed');
+             $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
+             $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
+             $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
+             $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
+             $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
+             currentDataIndex = 0;
+             counter = 0;
+             totalCorrectAnswer = 0;
+             $('#counter').hide();
+             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
+             $('#totalTimeTaken').text('');
+            
+
+           
+            
+            
+           
+           // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
 
             // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
         }
@@ -81,15 +95,15 @@
         var secondAnswer = $('#txtSecondWord').val();
         var thirdAnswer = $('#txtThirdWord').val();
         var fourthAnswer = $('#txtFourthWord').val();
-        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+        if (firstAnswer === '' || secondAnswer === '' || thirdAnswer === '' || fourthAnswer === '') {
             alert('please solve all the riddles first.');
             return false;
         }
-        if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
+        if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() === allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
             alert('Congratulation ! Your answer is correct.');
             totalCorrectAnswer++;
             currentDataIndex++;
-            $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
+            $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);//transition to next pic
             $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
             $('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
             $('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
@@ -115,8 +129,9 @@
             $('#totalTimeTaken').text(time);
             showGrade();
 
-            if (allDataFromCSV.length == currentDataIndex) {
 
+            if (allDataFromCSV.length === currentDataIndex) {
+                
                 showGrade();
             }
         }
@@ -132,31 +147,45 @@
     });
 
     $('#txtFirstWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() == $('#txtFirstWord').val().toLocaleLowerCase()) {
-            $('#tdHint1').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
+
+        if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() === $('#txtFirstWord').val().toLocaleLowerCase()) {
+            $('#tdHint1').text('Hint : '+ allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
             $('#spnFirstWord').show();
             $('#txtFirstWord').attr('readonly', 'true');
+            $('#warningFirstWord').hide();
+        } else {
+            $('#warningFirstWord').show();
         }
     });
     $('#txtSecondWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord2.Item1.toLocaleLowerCase() == $('#txtSecondWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord2.Item1.toLocaleLowerCase() === $('#txtSecondWord').val().toLocaleLowerCase()) {
             $('#tdHint2').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord2.Item2);
             $('#spnSecondWord').show();
             $('#txtSecondWord').attr('readonly', 'true');
+            $('#warningSecondWord').hide();
+        } else {
+            $('#warningSecondtWord').show();
         }
+
     });
     $('#txtThirdWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord3.Item1.toLocaleLowerCase() == $('#txtThirdWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord3.Item1.toLocaleLowerCase() === $('#txtThirdWord').val().toLocaleLowerCase()) {
             $('#tdHint3').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord3.Item2);
             $('#spnThirdWord').show();
             $('#txtThirdWord').attr('readonly', 'true');
+            $('#warningThirdWord').hide();
+        } else {
+            $('#warningThirdWord').show();
         }
     });
     $('#txtFourthWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord4.Item1.toLocaleLowerCase() == $('#txtFourthWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord4.Item1.toLocaleLowerCase() === $('#txtFourthWord').val().toLocaleLowerCase()) {
             $('#tdHint4').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord4.Item2);
             $('#spnFourthWord').show();
             $('#txtFourthWord').attr('readonly', 'true');
+            $('#warningFourthWord').hide();
+        } else {
+            $('#warningFourthWord').show();
         }
     });
 
@@ -167,6 +196,7 @@
             totalQuestions = data.length;
         });
     }
+
     function showGrade() {
         $('#counter').hide();
         var grade = (totalCorrectAnswer * 100) / allDataFromCSV.length;
@@ -175,6 +205,7 @@
         // logic to display grade
         //...........................
     }
+
     function shuffle(str) {
         a = [];
         for (var k = 0; k < str.length; k++) {

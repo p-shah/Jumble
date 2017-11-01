@@ -61,10 +61,10 @@ namespace Jumble.Controllers
                         {
                             d.Riddle = values[currentIndex];
                         }
-                        d.JumbleWord1 = getWordWithHint(values[currentIndex+1]);
-                        d.JumbleWord2 = getWordWithHint(values[currentIndex + 2]);
-                        d.JumbleWord3 = getWordWithHint(values[currentIndex + 3]);
-                        d.JumbleWord4 = getWordWithHint(values[currentIndex + 4]);
+                        d.JumbleWord1 = GetWordWithHint(values[currentIndex+1]);
+                        d.JumbleWord2 = GetWordWithHint(values[currentIndex + 2]);
+                        d.JumbleWord3 = GetWordWithHint(values[currentIndex + 3]);
+                        d.JumbleWord4 = GetWordWithHint(values[currentIndex + 4]);
 
                         d.Answer = values[currentIndex+5];
                         result.Add(d);
@@ -73,7 +73,7 @@ namespace Jumble.Controllers
             }
             return Json(result,JsonRequestBehavior.AllowGet);
         }
-        private Tuple<string, string> getWordWithHint(string word)
+        private Tuple<string, string> GetWordWithHint(string word)
         {
             char[] letters = word.ToCharArray();
             string hint = "";
