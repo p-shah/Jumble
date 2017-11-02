@@ -27,6 +27,7 @@ namespace Jumble.Controllers
 
             return View();
         }
+
         [HttpPost]
         public JsonResult GetAllDataFromCsvFile()
         {
@@ -73,6 +74,7 @@ namespace Jumble.Controllers
             }
             return Json(result,JsonRequestBehavior.AllowGet);
         }
+
         private Tuple<string, string> GetWordWithHint(string word)
         {
             char[] letters = word.ToCharArray();

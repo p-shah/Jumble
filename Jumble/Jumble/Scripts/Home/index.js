@@ -8,17 +8,15 @@
     var allDataFromCSV = null;
     var currentDataIndex = 0;
     var startEndBtnText = 'Start Game';
+    var imageCounter = 1;
+
+
     $('#gameDiv').hide();
 
     $('#spnFirstWord').hide();
     $('#spnSecondWord').hide();
     $('#spnThirdWord').hide();
     $('#spnFourthWord').hide();
-    $('#warningFirstWord').hide();
-    $('#warningSecondWord').hide();
-    $('#warningThirdWord').hide();
-    $('#warningFourthWord').hide()
-
 
     $('#btnStartAndEnd').text(startEndBtnText);
 
@@ -44,12 +42,11 @@
         $('#tdTotalQuestions').text(totalQuestions);
         $('#grade').text('');
         var btnText = $('#btnStartAndEnd').text();
-        if (btnText === startEndBtnText) {
-
+        if (btnText == startEndBtnText) {
 
             alert('solve all riddles within 20 minutes');
-            
-            btnText = $('#btnStartAndEnd').text('Give Up');
+
+            var btnText = $('#btnStartAndEnd').text('Give Up');
             $('#gameDiv').show();
 
             $('.clsAnswer').val('');
@@ -62,30 +59,28 @@
             $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
         }
         else {
+            // $('#gameDiv').hide();
+            var btnText = $('#btnStartAndEnd').text(startEndBtnText);
+            alert('You are failed');
+            $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
+            $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
+            $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
+            $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
+            $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
+            currentDataIndex = 0;
+            counter = 0;
+            totalCorrectAnswer = 0;
+            $('#counter').hide();
+            $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
+            $('#totalTimeTaken').text('');
 
-           // $('#gameDiv').hide();
-             btnText = $('#btnStartAndEnd').text(startEndBtnText);
-             alert('You Failed');
-             $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
-             $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
-             $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
-             $("#txtFourthWord").val(allDataFromCSV[currentDataIndex].JumbleWord4.Item1);
-             $("#txtFinalAnswer").val(allDataFromCSV[currentDataIndex].Answer);
-             currentDataIndex = 0;
-             counter = 0;
-             totalCorrectAnswer = 0;
-             $('#counter').hide();
-             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
-             $('#totalTimeTaken').text('');
-            
 
-           
-            
-            
-           
-           // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
+
+
+
 
             // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
+
         }
 
     });
@@ -95,15 +90,57 @@
         var secondAnswer = $('#txtSecondWord').val();
         var thirdAnswer = $('#txtThirdWord').val();
         var fourthAnswer = $('#txtFourthWord').val();
-        if (firstAnswer === '' || secondAnswer === '' || thirdAnswer === '' || fourthAnswer === '') {
-            alert('please solve all the riddles first.');
-            return false;
-        }
-        if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() === allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
-            alert('Congratulation ! Your answer is correct.');
+        //if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+        //    alert('please solve all the riddles first.');
+        //    return false;
+        //}
+        //if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
+        //alert('Congratulation ! Your answer is correct.');
+
+        if (true) {
+
             totalCorrectAnswer++;
             currentDataIndex++;
-            $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);//transition to next pic
+
+            //transition to next pic
+            imageCounter = imageCounter + 1;
+            alert('The image counter:' + imageCounter);
+            //transition to next pic
+
+            if (imageCounter == 2) {
+                $("#themePicture").attr("src", "https://www.churchmotiongraphics.com/wp-content/uploads/2016/06/Under-The-Sea.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 3) {
+                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/grass_sky_girl_dress_umbrella_69990_1920x1080.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 4) {
+                $("#themePicture").attr("src", "https://i.ytimg.com/vi/1SehP6S8JoQ/maxresdefault.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 5) {
+                $("#themePicture").attr("src", "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/VGQYpqS9gikig2l31/videoblocks-a-stack-of-papers-is-stapled-with-a-stapler_hu4sk9bol_thumbnail-full01.png");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 6) {
+                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/statue_stone_storage_63300_1920x1080.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 7) {
+                $("#themePicture").attr("src", "https://www.quietrev.com/wp-content/uploads/2015/12/5-Ways-to-Make-Small-Talk-More-Meaningful_SOURCE_stocksy.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 8) {
+                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/mushroom_grass_plant_nature_83167_1920x1080.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 9) {
+                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/keyboard_laptop_macro_73432_1920x1080.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 10) {
+                $("#themePicture").attr("src", "http://stanfordservicesnv.com/wp-content/themes/ga5/images/sliders/02.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            } else if (imageCounter == 11) {
+                $("#themePicture").attr("src", "http://www.hdwallpaperup.com/wp-content/uploads/2014/12/winner-1920x1080.jpg");
+                $("#themePicture").css({ 'width': '', 'height': '325px' });
+            }
+
+
+            $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
             $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
             $('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
             $('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
@@ -130,13 +167,14 @@
             showGrade();
 
 
-            if (allDataFromCSV.length === currentDataIndex) {
-                
+
+            if (allDataFromCSV.length == currentDataIndex) {
+
                 showGrade();
             }
         }
         else {
-            alert('Your answer is incorrect! Please try again!');
+            alert('Your answer is incorrect! Please try again');
         }
     });
 
@@ -147,45 +185,31 @@
     });
 
     $('#txtFirstWord').on('change', function () {
-
-        if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() === $('#txtFirstWord').val().toLocaleLowerCase()) {
-            $('#tdHint1').text('Hint : '+ allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
+        if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() == $('#txtFirstWord').val().toLocaleLowerCase()) {
+            $('#tdHint1').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
             $('#spnFirstWord').show();
             $('#txtFirstWord').attr('readonly', 'true');
-            $('#warningFirstWord').hide();
-        } else {
-            $('#warningFirstWord').show();
         }
     });
     $('#txtSecondWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord2.Item1.toLocaleLowerCase() === $('#txtSecondWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord2.Item1.toLocaleLowerCase() == $('#txtSecondWord').val().toLocaleLowerCase()) {
             $('#tdHint2').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord2.Item2);
             $('#spnSecondWord').show();
             $('#txtSecondWord').attr('readonly', 'true');
-            $('#warningSecondWord').hide();
-        } else {
-            $('#warningSecondtWord').show();
         }
-
     });
     $('#txtThirdWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord3.Item1.toLocaleLowerCase() === $('#txtThirdWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord3.Item1.toLocaleLowerCase() == $('#txtThirdWord').val().toLocaleLowerCase()) {
             $('#tdHint3').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord3.Item2);
             $('#spnThirdWord').show();
             $('#txtThirdWord').attr('readonly', 'true');
-            $('#warningThirdWord').hide();
-        } else {
-            $('#warningThirdWord').show();
         }
     });
     $('#txtFourthWord').on('change', function () {
-        if (allDataFromCSV[currentDataIndex].JumbleWord4.Item1.toLocaleLowerCase() === $('#txtFourthWord').val().toLocaleLowerCase()) {
+        if (allDataFromCSV[currentDataIndex].JumbleWord4.Item1.toLocaleLowerCase() == $('#txtFourthWord').val().toLocaleLowerCase()) {
             $('#tdHint4').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord4.Item2);
             $('#spnFourthWord').show();
             $('#txtFourthWord').attr('readonly', 'true');
-            $('#warningFourthWord').hide();
-        } else {
-            $('#warningFourthWord').show();
         }
     });
 
@@ -196,7 +220,6 @@
             totalQuestions = data.length;
         });
     }
-
     function showGrade() {
         $('#counter').hide();
         var grade = (totalCorrectAnswer * 100) / allDataFromCSV.length;
@@ -205,7 +228,6 @@
         // logic to display grade
         //...........................
     }
-
     function shuffle(str) {
         a = [];
         for (var k = 0; k < str.length; k++) {
@@ -225,8 +247,6 @@
         }
 
         return result;
+
     };
 });
-
-
-
