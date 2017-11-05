@@ -116,34 +116,34 @@
             //transition to next pic
 
             if (imageCounter == 2) {
-                $("#themePicture").attr("src", "/Pictures/test3.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme2.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 3) {
-                $("#themePicture").attr("src", "/Pictures/test4.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme3.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 4) {
-                $("#themePicture").attr("src", "https://i.ytimg.com/vi/1SehP6S8JoQ/maxresdefault.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme4.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 5) {
-                $("#themePicture").attr("src", "https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/VGQYpqS9gikig2l31/videoblocks-a-stack-of-papers-is-stapled-with-a-stapler_hu4sk9bol_thumbnail-full01.png");
+                $("#themePicture").attr("src", "/Pictures/theme5.png");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 6) {
-                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/statue_stone_storage_63300_1920x1080.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme6.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 7) {
-                $("#themePicture").attr("src", "https://www.quietrev.com/wp-content/uploads/2015/12/5-Ways-to-Make-Small-Talk-More-Meaningful_SOURCE_stocksy.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme7.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 8) {
-                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/mushroom_grass_plant_nature_83167_1920x1080.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme8.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 9) {
-                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/keyboard_laptop_macro_73432_1920x1080.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme9.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 10) {
-                $("#themePicture").attr("src", "http://stanfordservicesnv.com/wp-content/themes/ga5/images/sliders/02.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme10.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 11) {
-                $("#themePicture").attr("src", "http://www.hdwallpaperup.com/wp-content/uploads/2014/12/winner-1920x1080.jpg");
+                $("#themePicture").attr("src", "/Pictures/theme2.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             }
 

@@ -165,6 +165,17 @@
     <Content Include="Pictures\test1.jpg" />
     <Content Include="Pictures\test3.jpg" />
     <Content Include="Pictures\test4.jpg" />
+    <Content Include="Pictures\theme1.png" />
+    <Content Include="Pictures\theme10.jpg" />
+    <Content Include="Pictures\theme2.jpg" />
+    <Content Include="Pictures\theme3.jpg" />
+    <Content Include="Pictures\theme4.jpg" />
+    <Content Include="Pictures\theme5.png" />
+    <Content Include="Pictures\theme6.jpg" />
+    <Content Include="Pictures\theme7.jpg" />
+    <Content Include="Pictures\theme8.jpg" />
+    <Content Include="Pictures\theme9.jpg" />
+    <Content Include="Pictures\themeWINNER.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
