@@ -7,8 +7,9 @@
     var time = '';
     var allDataFromCSV = null;
     var currentDataIndex = 0;
-    var startEndBtnText = 'Start Game';
+    var startEndBtnText = 'Start Game7';
     var imageCounter = 1;
+
 
 
     $('#gameDiv').hide();
@@ -36,17 +37,27 @@
     }, 1000);
 
     $('#btnStartAndEnd').on('click', function () {
+        //shows the theme image
+        $('#themePicture').show();
+        //shows the theme image
+
 
         counter = 0;
         $('#counter').show();
         $('#tdTotalQuestions').text(totalQuestions);
         $('#grade').text('');
+
         var btnText = $('#btnStartAndEnd').text();
+
         if (btnText == startEndBtnText) {
 
             alert('solve all riddles within 20 minutes');
 
-            var btnText = $('#btnStartAndEnd').text('Give Up');
+            document.getElementById("readyToPlayP").style.visibility = "hidden";//hides the p tag with the ready to paly message
+            document.getElementById("btnCheck").style.visibility = "visible";//shows 'check answer' button
+
+            var btnText = $('#btnStartAndEnd').text('Give Up');//changes the texts
+
             $('#gameDiv').show();
 
             $('.clsAnswer').val('');
@@ -58,10 +69,13 @@
             $('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
             $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
         }
-        else {
+        else {//this will fire every time except the first time around
+            document.getElementById("readyToPlayP").style.visibility = "visible";//shows the p tag with the ready to paly message
+            document.getElementById("btnCheck").style.visibility = "hidden";//hides 'check answer' button
+
             // $('#gameDiv').hide();
             var btnText = $('#btnStartAndEnd').text(startEndBtnText);
-            alert('You are failed');
+            alert('You Gave Up and Failed! Please Play Again!');
             $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
             $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
             $("#txtThirdWord").val(allDataFromCSV[currentDataIndex].JumbleWord3.Item1);
@@ -74,18 +88,12 @@
             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
             $('#totalTimeTaken').text('');
 
-
-
-
-
-
-            // $('#txtFirstWord').text(allDataFromCSV[currentDataIndex].JumbleWord1);
-
         }
 
     });
 
     $('#btnCheck').on('click', function () {
+
         var firstAnswer = $('#txtFirstWord').val();
         var secondAnswer = $('#txtSecondWord').val();
         var thirdAnswer = $('#txtThirdWord').val();
@@ -159,22 +167,43 @@
 
             $('.clsHint').text('');
 
-
-
             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
 
             $('#totalTimeTaken').text(time);
             showGrade();
 
-
-
             if (allDataFromCSV.length == currentDataIndex) {
-
                 showGrade();
+            }
+
+            //code to check the score and decide if the game was beaten or not
+            if (totalCorrectAnswer == 3) {
+                alert("You've Beaten This Game!")
+                loadAllDataFromCSV();
+
+                var counter = 0;
+                var totalQuestions = 0;
+                var totalCorrectAnswer = 0;
+                var time = '';
+                var allDataFromCSV = null;
+                var currentDataIndex = 0;
+
+                document.getElementById("readyToPlayP").style.visibility = "visible";//hides the p tag with the ready to paly message
+                var btnText = $('#btnStartAndEnd').text('Start Game7');//changes the texts
+
+                totalCorrectAnswer = 0;
+                $('#gameDiv').show();
+                $('.clsAnswer').val('');
+                $('#txtFinalAnswer').val('');
+                $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
+                $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
+                $('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
+                $('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
+                $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
             }
         }
         else {
-            alert('Your answer is incorrect! Please try again');
+            alert('Your answer is incorrect! Please try again!');
         }
     });
 
@@ -221,7 +250,8 @@
         });
     }
     function showGrade() {
-        $('#counter').hide();
+        //$('#counter').hide();//old
+        $('#counter').show();//new
         var grade = (totalCorrectAnswer * 100) / allDataFromCSV.length;
         $('#grade').text(grade + "%");
 
