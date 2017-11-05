@@ -116,10 +116,10 @@
             //transition to next pic
 
             if (imageCounter == 2) {
-                $("#themePicture").attr("src", "https://www.churchmotiongraphics.com/wp-content/uploads/2016/06/Under-The-Sea.jpg");
+                $("#themePicture").attr("src", "/Pictures/test3.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 3) {
-                $("#themePicture").attr("src", "https://wallpaperscraft.com/image/grass_sky_girl_dress_umbrella_69990_1920x1080.jpg");
+                $("#themePicture").attr("src", "/Pictures/test4.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 4) {
                 $("#themePicture").attr("src", "https://i.ytimg.com/vi/1SehP6S8JoQ/maxresdefault.jpg");
@@ -179,27 +179,27 @@
             //code to check the score and decide if the game was beaten or not
             if (totalCorrectAnswer == 3) {
                 alert("You've Beaten This Game!")
-                loadAllDataFromCSV();
+                //loadAllDataFromCSV();
 
-                var counter = 0;
-                var totalQuestions = 0;
-                var totalCorrectAnswer = 0;
-                var time = '';
-                var allDataFromCSV = null;
-                var currentDataIndex = 0;
+                //var counter = 0;
+                //var totalQuestions = 0;
+                //var totalCorrectAnswer = 0;
+                //var time = '';
+                //var allDataFromCSV = null;
+                //var currentDataIndex = 0;
 
-                document.getElementById("readyToPlayP").style.visibility = "visible";//hides the p tag with the ready to paly message
-                var btnText = $('#btnStartAndEnd').text('Start Game7');//changes the texts
+                //document.getElementById("readyToPlayP").style.visibility = "visible";//hides the p tag with the ready to paly message
+                //var btnText = $('#btnStartAndEnd').text('Start Game7');//changes the texts
 
-                totalCorrectAnswer = 0;
-                $('#gameDiv').show();
-                $('.clsAnswer').val('');
-                $('#txtFinalAnswer').val('');
-                $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
-                $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
-                $('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
-                $('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
-                $('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
+                //totalCorrectAnswer = 0;
+                //$('#gameDiv').show();
+                //$('.clsAnswer').val('');
+                //$('#txtFinalAnswer').val('');
+                //$('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
+                //$('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
+                //$('#tdJumbleWord2').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item1));
+                //$('#tdJumbleWord3').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item1));
+                //$('#tdJumbleWord4').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item1));
             }
         }
         else {
