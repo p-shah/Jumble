@@ -14,7 +14,7 @@
     //a collection of "Data" objects
 
     var currentDataIndex = 0;
-    var startEndBtnText = 'Start Game7';
+    var startEndBtnText = 'Start Game';
     var imageCounter = 1;
 
     $('#gameDiv').hide();
@@ -66,6 +66,11 @@
 
             $('.clsAnswer').val('');
             $('#txtFinalAnswer').val('');
+         //   $('.clsHint').val('a'); (need to fix this)
+            $('#spnFirstWord').hide();
+            $('#spnSecondWord').hide();
+            $('#spnThirdWord').hide();
+            $('#spnFourthWord').hide();
 
             $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
             $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
@@ -282,7 +287,7 @@
 
     $('#txtFirstWord').on('change', function () {
         if (allDataFromCSV[currentDataIndex].JumbleWord1.Item1.toLocaleLowerCase() == $('#txtFirstWord').val().toLocaleLowerCase()) {
-            $('#tdHint1').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord1.Item2);
+            $('#tdHint1').text('Hint : ' + shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item2));
             $('#spnFirstWord').show();
             $('#txtFirstWord').attr('readonly', 'true');
         }
@@ -290,7 +295,7 @@
 
     $('#txtSecondWord').on('change', function () {
         if (allDataFromCSV[currentDataIndex].JumbleWord2.Item1.toLocaleLowerCase() == $('#txtSecondWord').val().toLocaleLowerCase()) {
-            $('#tdHint2').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord2.Item2);
+            $('#tdHint2').text('Hint : ' + shuffle(allDataFromCSV[currentDataIndex].JumbleWord2.Item2));
             $('#spnSecondWord').show();
             $('#txtSecondWord').attr('readonly', 'true');
         }
@@ -298,7 +303,7 @@
 
     $('#txtThirdWord').on('change', function () {
         if (allDataFromCSV[currentDataIndex].JumbleWord3.Item1.toLocaleLowerCase() == $('#txtThirdWord').val().toLocaleLowerCase()) {
-            $('#tdHint3').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord3.Item2);
+            $('#tdHint3').text('Hint : ' + shuffle(allDataFromCSV[currentDataIndex].JumbleWord3.Item2));
             $('#spnThirdWord').show();
             $('#txtThirdWord').attr('readonly', 'true');
         }
@@ -306,7 +311,7 @@
 
     $('#txtFourthWord').on('change', function () {
         if (allDataFromCSV[currentDataIndex].JumbleWord4.Item1.toLocaleLowerCase() == $('#txtFourthWord').val().toLocaleLowerCase()) {
-            $('#tdHint4').text('Hint : ' + allDataFromCSV[currentDataIndex].JumbleWord4.Item2);
+            $('#tdHint4').text('Hint : ' + shuffle(allDataFromCSV[currentDataIndex].JumbleWord4.Item2));
             $('#spnFourthWord').show();
             $('#txtFourthWord').attr('readonly', 'true');
         }
