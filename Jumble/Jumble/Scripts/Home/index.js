@@ -53,7 +53,7 @@
 
         var btnText = $('#btnStartAndEnd').text();
 
-        if (btnText == 'Start Game7') {//fires when the "Start Game" button is pushed
+        if (btnText == 'Start Game') {//fires when the "Start Game" button is pushed
 
             alert('Solve All Riddles Within 20 Minutes To Be A Boss!');
 
@@ -106,14 +106,16 @@
         var secondAnswer = $('#txtSecondWord').val();
         var thirdAnswer = $('#txtThirdWord').val();
         var fourthAnswer = $('#txtFourthWord').val();
-        //if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
-        //    alert('please solve all the riddles first.');
-        //    return false;
-        //}
-        //if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
-        //alert('Congratulation ! Your answer is correct.');
 
-        if (true) {
+
+        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+            alert('please solve all the riddles first.');
+            return false;
+        }
+        if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
+        alert('Congratulation ! Your answer is correct.');
+
+        //if (true) {
 
             totalCorrectAnswer++;
             currentDataIndex++;
