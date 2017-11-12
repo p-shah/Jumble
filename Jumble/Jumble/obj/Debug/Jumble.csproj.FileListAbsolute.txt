@@ -263,7 +263,6 @@ C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\bin\System.Web.WebPages.Deploymen
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\bin\System.Web.WebPages.Razor.xml
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\bin\Antlr3.Runtime.pdb
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\bin\Newtonsoft.Json.xml
-C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\obj\Debug\Jumble.csprojResolveAssemblyReference.cache
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\obj\Debug\Jumble.csproj.CoreCompileInputs.cache
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\obj\Debug\Jumble.dll
 C:\Users\tuf77728\Desktop\JUMBLE\Jumble\Jumble\obj\Debug\Jumble.pdb

@@ -55,7 +55,7 @@
 
         if (btnText == 'Start Game') {//fires when the "Start Game" button is pushed
 
-            alert('Solve All Riddles Within 20 Minutes To Be A Boss!');
+            alert('Solve All Riddles Within 20 Minutes To Be A Boss!' + "\n \n" + "Finish in less than 10 minutes --> A letter grade \n" + "Finish in 11 minutes --> B letter grade \n" + "Finish in 12 minutes --> C letter grade \n" + "Finish in 13 minutes --> D letter grade \n" + "Finish in more than 13 minutes --> F letter grade \n");
 
             document.getElementById("readyToPlayP").style.visibility = "hidden";//hides the p tag with the ready to paly message
             document.getElementById("btnCheck").style.visibility = "visible";//shows 'check answer' button
