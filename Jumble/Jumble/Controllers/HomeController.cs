@@ -45,6 +45,7 @@ namespace Jumble.Controllers
                         var line = userData[i];//this is each line or each riddle
 
                         Data dataOBJ = new Data();
+                        //***what this class looks like
                         //public string Riddle { get; set; }
                         //public Tuple<string, string> JumbleWord1 { get; set; }
                         //public Tuple<string, string> JumbleWord2 { get; set; }
@@ -94,7 +95,7 @@ namespace Jumble.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        private Tuple<string, string> GetWordWithHint(string word)
+        public Tuple<string, string> GetWordWithHint(string word)
         {
             char[] letters = word.ToCharArray();
             string hint = "";
@@ -106,6 +107,66 @@ namespace Jumble.Controllers
                 }
             }
             return new Tuple<string, string>(word.ToLower(), hint);
+        }
+
+        public Boolean CheckAndCompare(String stringOne, String stringTwo)
+        {
+            if (stringOne == stringTwo)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public String GenerateLetterScroe(String timeTaken)
+        {
+            int minutesTaken;
+            String letterScore = "A";
+
+            try
+            {
+                minutesTaken = int.Parse(timeTaken);
+
+                if (minutesTaken < 10)
+                {
+                    letterScore = "A";
+                    return letterScore;
+                }
+                else if (minutesTaken == 11)
+                {
+                    letterScore = "B";
+                    return letterScore;
+                }
+                else if (minutesTaken == 12)
+                {
+                    letterScore = "C";
+                    return letterScore;
+                }
+                else if (minutesTaken == 13)
+                {
+                    letterScore = "D";
+                    return letterScore;
+                }
+                else
+                {
+                    letterScore = "F";
+                    return letterScore;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally {
+
+            }
+
+            
         }
 
     }

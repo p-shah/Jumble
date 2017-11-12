@@ -122,7 +122,7 @@
 
             //transition to next pic
             imageCounter = imageCounter + 1;
-            alert('The image counter:' + imageCounter);
+            //alert('The image counter:' + imageCounter);
             //transition to next pic
 
             if (imageCounter == 2) {
