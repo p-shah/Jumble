@@ -12,6 +12,9 @@ namespace Jumble
         int numberOfQuestions = 0;
         int totalCorrectAnswers = 0;
 
+        public JumbleManager() {
+
+        }
         public int GetTotalQuestions()
         {
             return numberOfQuestions;

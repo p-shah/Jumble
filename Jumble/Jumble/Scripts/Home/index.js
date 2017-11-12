@@ -4,11 +4,12 @@
     //fires the "GetAllDataFromCsvFile" method in the HomeControllers, which returns a collection of "Data objects" and sets the 'allDataFromCSV' variable
     //each Data object represents each riddle or line
 
-
     var counter = 0;
     var totalQuestions = 0;
     var totalCorrectAnswer = 0;
     var time = '';
+    var minutes = 0;
+    var seconds = 0;
 
     var allDataFromCSV = null; // the "loadAllDataFromCSV()" methods sets this variable 
     //a collection of "Data" objects
@@ -26,20 +27,23 @@
 
     $('#btnStartAndEnd').text(startEndBtnText);
 
+    //***run every 1000 milliseconds, which is every second
     setInterval(function () {
         counter++;
         time = counter + " seconds";
         if (counter > 59) {
-            var minutes = counter / 60;
+            minutes = counter / 60;//this gets the minutes value
             minutes = Math.trunc(minutes);
-            var seconds = counter % 60;
+            seconds = counter % 60;//this gets the seconds value
             time = minutes + " minutes " + seconds + " seconds";
         }
+
         $('#counter').text(time);
         if (counter >= 1200) { // 20 minutes to complete the game
             showGrade();
         }
-    }, 1000);
+
+    }, 1000);//run every 1000 milliseconds, which is every second
 
     $('#btnStartAndEnd').on('click', function () {
         //shows the theme image
@@ -108,14 +112,13 @@
         var fourthAnswer = $('#txtFourthWord').val();
 
 
-        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
-            alert('please solve all the riddles first.');
-            return false;
-        }
-        if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
-        alert('Congratulation ! Your answer is correct.');
+        //if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+        //    alert('Please Solve All The Riddles First!.');
+        //} else if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
+        //    alert('Congratulation ! Your answer is correct.');
 
-        //if (true) {
+        
+        if (true) {
 
             totalCorrectAnswer++;
             currentDataIndex++;
@@ -187,7 +190,10 @@
             }
 
             //code to check the score and decide if the game is beaten or not
-            if (totalCorrectAnswer == 4) {
+            if (totalCorrectAnswer == 2) {
+
+                
+                
                 //code here to: 
                 //1:hide the theme picuture 
                 $('#themePicture').hide();
@@ -201,8 +207,46 @@
 
                 modal.style.display = "block";//displays the modal
 
+                //code to calculate the score based on the time taken to complete the riddle
+
+                //hides the timer
+                $('#counter').hide();
+
+                
+
+                var totalSeconds = counter;
+                var totalMinutesTaken = totalSeconds / 60;
+                totalMinutesTaken = Math.trunc(totalMinutesTaken);
+                var totalSecondsTaken = counter % 60;
+
+                var totalTimeTaken = time;
+
+                var letterGrade = "A";
+
+                if (totalMinutesTaken <= 10) {
+                    letterGrade = "A";
+                } else if (totalMinutesTaken == 11) {
+                    letterGrade = "B";
+                } else if (totalMinutesTaken == 12) {
+                    letterGrade = "C";
+                } else if (totalMinutesTaken == 13) {
+                    letterGrade = "D";
+                } else {
+                    letterGrade = "F";
+                }
+                
+
+                $('#finalScore').text("Your total time: " + totalMinutesTaken + " minutes and " + totalSecondsTaken + " seconds!");
+       
+                $('#finalLetterGrade').text("Letter Grade: " + letterGrade);
+                
+                //alert("The total time is now: " + totalMinutesTaken + "minutes and " + totalSecondsTaken + " seconds!");
+                //code to calculate the score based on the time taken to complete the riddle
+
+
                 // When the user clicks on <span> (x), close the modal
                 span.onclick = function () {
+                    $('#counter').show();//displays the timer
                     modal.style.display = "none";
                     //----------code to reset the game----------
                     //1:reset values: counter,totalQuestions,totalCorrectAnswer, time, allDataFromCSV, currentDataIndex
@@ -239,6 +283,7 @@
                 // When the user clicks anywhere outside of the modal, close it
                 window.onclick = function (event) {
                     if (event.target == modal) {
+                        $('#counter').show();//displays the timer
                         modal.style.display = "none";
 
                         //----------code to reset the game----------
@@ -251,7 +296,7 @@
                         document.getElementById("readyToPlayP").style.visibility = "visible";//hides the p tag with the ready to paly message
                         document.getElementById("btnCheck").style.visibility = "hidden";//hides 'check answer' button
                         $('#gameDiv').hide();
-                        startEndBtnText = $('#btnStartAndEnd').text('Start Game7');//changes the texts of the "btnStartAndEnd" button
+                        startEndBtnText = $('#btnStartAndEnd').text('Start Game');//changes the texts of the "btnStartAndEnd" button
                         $("#themePicture").attr("src", "/Pictures/theme1.png");//resets the theme pictures
 
                         //code to manually clear the feilds for the 'Total Correct Answers' and 'Time Taken Since Last Correct Answer' since the updated changes won't show until the page refreshes
@@ -328,8 +373,7 @@
     }
 
     function showGrade() {
-        //$('#counter').hide();//old
-        $('#counter').show();//new
+        $('#counter').show();
         var grade = (totalCorrectAnswer * 100) / allDataFromCSV.length;
         $('#grade').text(grade + "%");
     }
