@@ -67,6 +67,7 @@
             var btnText = $('#btnStartAndEnd').text('Give Up');//changes the texts
 
             $('#gameDiv').show();
+            $('.clsAnswer').removeAttr('readonly');
 
             $('.clsAnswer').val('');
             $('#txtFinalAnswer').val('');
@@ -75,6 +76,29 @@
             $('#spnSecondWord').hide();
             $('#spnThirdWord').hide();
             $('#spnFourthWord').hide();
+            //var answer = allDataFromCSV[currentDataIndex].Answer;
+            //console.log(answer);
+            //var totalTextBoxes = answer.trim().split(' ').length;
+            //console.log(totalTextBoxes);
+            //var htmlString = '';
+            //for (var i = 0; i < totalTextBoxes; i++) {
+            //    htmlString += '<input type = "text"/>&nbsp;&nbsp;&nbsp;'
+            //}
+            //$('#txtFinalAnswer').html(htmlString);
+
+            textBoxes();
+
+            //$('#btnGetFullAnswer').on('click', function () {
+            //    var userAnswer = "";
+            //    var div = $('#txtFinalAnswer').children();
+            //    console.log(div);
+            //    for (var i = 0; i < div.length; i++) {
+            //        alert(div[i].value);
+            //        userAnswer += div[i].value.trim() + " ";
+            //    }
+            //    alert(userAnswer);
+            //});
+
 
             $('#tdRiddle').text(allDataFromCSV[currentDataIndex].Riddle);
             $('#tdJumbleWord1').text(shuffle(allDataFromCSV[currentDataIndex].JumbleWord1.Item1));
@@ -101,6 +125,7 @@
             $('#counter').hide();
             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
             $('#totalTimeTaken').text('');
+            $('.clsHint').text('');
         }
     });
 
@@ -111,14 +136,27 @@
         var thirdAnswer = $('#txtThirdWord').val();
         var fourthAnswer = $('#txtFourthWord').val();
 
+        var userAnswer = "";
+        var div = $('#txtFinalAnswer').children();
+        console.log(div);
+        for (var i = 0; i < div.length; i++) {
+            //alert(div[i].value);
+            userAnswer += div[i].value.trim() + " ";
+        }
+        //alert(userAnswer);
+        console.log(userAnswer);
 
-        //if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
-        //    alert('Please Solve All The Riddles First!.');
-        //} else if ($('#txtFinalAnswer').val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase()) {
-        //    alert('Congratulation ! Your answer is correct.');
+        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+           alert('Please Solve All The Jumbled Words First!.');
+        }
+       // if ($('#txtFinalAnswer').children.val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase().trim()) {
+       //     alert('Congratulation ! Your answer is correct.');
+
+        if (userAnswer.trim()== allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase().trim()) {
+                alert('Congratulation ! Your answer is correct.');
 
         
-        if (true) {
+      //  if (true) {
 
             totalCorrectAnswer++;
             currentDataIndex++;
@@ -173,7 +211,10 @@
             $('#spnFourthWord').hide();
 
             $('.clsAnswer').val('');
-            $('#txtFinalAnswer').val('');
+            textBoxes();
+        
+
+            
 
             //$('.clsAnswer').prop('readonly', 'false');
             $('.clsAnswer').removeAttr('readonly');
@@ -258,7 +299,7 @@
                     document.getElementById("readyToPlayP").style.visibility = "visible";//hides the p tag with the ready to paly message
                     document.getElementById("btnCheck").style.visibility = "hidden";//hides 'check answer' button
                     $('#gameDiv').hide();
-                    startEndBtnText = $('#btnStartAndEnd').text('Start Game7');//changes the texts of the "btnStartAndEnd" button
+                    startEndBtnText = $('#btnStartAndEnd').text('Start Game');//changes the texts of the "btnStartAndEnd" button
                     $("#themePicture").attr("src", "/Pictures/theme1.png");//resets the theme pictures
 
                     //code to manually clear the feilds for the 'Total Correct Answers' and 'Time Taken Since Last Correct Answer' since the updated changes won't show until the page refreshes
@@ -376,6 +417,20 @@
         $('#counter').show();
         var grade = (totalCorrectAnswer * 100) / allDataFromCSV.length;
         $('#grade').text(grade + "%");
+    }
+
+
+
+    function textBoxes() {
+        var answer = allDataFromCSV[currentDataIndex].Answer;
+        console.log(answer);
+        var totalTextBoxes = answer.trim().split(' ').length;
+        console.log(totalTextBoxes);
+        var htmlString = '';
+        for (var i = 0; i < totalTextBoxes; i++) {
+            htmlString += '<input type = "text"/>&nbsp;&nbsp;&nbsp;'
+        }
+        $('#txtFinalAnswer').html(htmlString);
     }
 
     function shuffle(str) {
