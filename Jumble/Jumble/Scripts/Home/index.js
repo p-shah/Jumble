@@ -112,7 +112,7 @@
             document.getElementById("btnCheck").style.visibility = "hidden";//hides 'check answer' button
 
             // $('#gameDiv').hide();
-            var btnText = $('#btnStartAndEnd').text(startEndBtnText);
+            var btnText = $('#btnStartAndEnd').text('Start Game');
             alert('You Gave Up and Failed! Please Play Again!');
             $("#txtFirstWord").val(allDataFromCSV[currentDataIndex].JumbleWord1.Item1);
             $("#txtSecondWord").val(allDataFromCSV[currentDataIndex].JumbleWord2.Item1);
@@ -126,6 +126,16 @@
             $('#tdTotalCorrectAnswers').text(totalCorrectAnswer);
             $('#totalTimeTaken').text('');
             $('.clsHint').text('');
+
+            imageCounter = 1;//resets the image counter 
+
+            //resets the image back to 1 and then hides it
+            $("#themePicture").attr("src", "/Pictures/theme1.png");
+            $("#themePicture").css({ 'width': '', 'height': '325px' });
+
+            //hide the image and set it to the first image 
+            $('#themePicture').hide();
+            //$('#themePicture').show();
         }
     });
 
@@ -146,24 +156,25 @@
         //alert(userAnswer);
         console.log(userAnswer);
 
-        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
-           alert('Please Solve All The Jumbled Words First!.');
-        }
+        
        // if ($('#txtFinalAnswer').children.val().toLocaleLowerCase().trim() == allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase().trim()) {
        //     alert('Congratulation ! Your answer is correct.');
 
+
+        if (firstAnswer == '' || secondAnswer == '' || thirdAnswer == '' || fourthAnswer == '') {
+            alert('Please Solve All The Jumbled Words First!.');
+        }
         if (userAnswer.trim()== allDataFromCSV[currentDataIndex].Answer.toLocaleLowerCase().trim()) {
                 alert('Congratulation ! Your answer is correct.');
 
-        
-      //  if (true) {
+        //if (true) {
 
             totalCorrectAnswer++;
             currentDataIndex++;
 
             //transition to next pic
             imageCounter = imageCounter + 1;
-            //alert('The image counter:' + imageCounter);
+            alert('The image counter:' + imageCounter);
             //transition to next pic
 
             if (imageCounter == 2) {
@@ -194,8 +205,7 @@
                 $("#themePicture").attr("src", "/Pictures/theme10.jpg");
                 $("#themePicture").css({ 'width': '', 'height': '325px' });
             } else if (imageCounter == 11) {
-                $("#themePicture").attr("src", "/Pictures/theme2.jpg");
-                $("#themePicture").css({ 'width': '', 'height': '325px' });
+               
             }
 
 
@@ -213,9 +223,6 @@
             $('.clsAnswer').val('');
             textBoxes();
         
-
-            
-
             //$('.clsAnswer').prop('readonly', 'false');
             $('.clsAnswer').removeAttr('readonly');
 
@@ -231,14 +238,11 @@
             }
 
             //code to check the score and decide if the game is beaten or not
-            if (totalCorrectAnswer == 2) {
+            if (totalCorrectAnswer == 10) {
 
-                
-                
                 //code here to: 
                 //1:hide the theme picuture 
                 $('#themePicture').hide();
-
 
                 // Get the modal
                 var modal = document.getElementById('myModal');
@@ -251,9 +255,7 @@
                 //code to calculate the score based on the time taken to complete the riddle
 
                 //hides the timer
-                $('#counter').hide();
-
-                
+                $('#counter').hide(); 
 
                 var totalSeconds = counter;
                 var totalMinutesTaken = totalSeconds / 60;
@@ -317,7 +319,7 @@
                     allDataFromCSV = null;
                     currentDataIndex = 0;
                     imageCounter = 1;
-                    alert('inside 1' + '\n' + totalCorrectAnswer.toString());
+                    //alert('inside 1' + '\n' + totalCorrectAnswer.toString());
                     //----------code to reset the game----------
                 }
 
@@ -354,7 +356,7 @@
                         allDataFromCSV = null;
                         currentDataIndex = 0;
                         imageCounter = 1;
-                        alert('inside 2' + '\n' + totalCorrectAnswer.toString());
+                        //alert('inside 2' + '\n' + totalCorrectAnswer.toString());
                         //----------code to reset the game----------
                     }
                 }
